@@ -1,0 +1,161 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Calculator</title>
+</head>
+
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #EFEFFF;   
+    }
+
+    #container {
+        display: flex;
+        width: 360px;
+        height: 520px;
+        border-radius: 20px;
+        background-color: grey;
+        flex-direction: column;
+    }
+
+    #displayField {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 320px;
+        height: 80px;
+        border-radius: 10px;
+        margin: 20px;
+        background-color: white;
+        font-size: 64px;
+    }
+
+    #userInputs {
+        display: flex;
+        width: 320px;
+        height: 380px;
+        border-radius: 10px;
+        margin: 0px 20px 10px 20px;
+        background-color: darkgrey;
+        flex-direction: row;
+        font-size: 48px;
+    }
+
+    #numbers {
+        display: grid;
+        grid-template-areas: "nine eight seven" "six five four" "three two one" "decimal zero equals";
+        width: 240px;
+        height: 380px;
+    }
+
+    #functions {
+        display: grid;
+        grid-template-areas: "clear" "divide" "multiply" "subtract" "add";
+        width: 80px;
+        height: 367.5px;
+        margin-top: 2px;
+        padding-bottom: 8px;
+    }
+
+    .specialButtons {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        padding: 10px 20px 10px 20px;
+        align-self: center;
+        justify-self: center;
+        width: 20px;
+        height: 32px;
+        background-color: #B0C4DE;
+        border: 2px black solid;
+        border-radius: 5px;
+        font-size: 32px;
+        font-weight: bold;
+        cursor: default;
+    }
+
+    .numberButtons {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        padding: 10px 20px 10px 20px;
+        align-self: center;
+        justify-self: center;
+        width: 28px;
+        height: 48px;
+        background-color: #FFFFFF;
+        border: 2px black solid;
+        border-radius: 5px;
+        cursor: default;
+    }
+
+    .functionButtons {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        padding: 10px 20px 10px 20px;
+        align-self: center;
+        justify-self: center;
+        width: 20px;
+        height: 32px;
+        background-color: #B0C4DE;
+        border: 2px black solid;
+        border-radius: 5px;
+        font-size: 32px;
+        font-weight: bold;
+        cursor: default;
+    }
+
+    .numberButtons:hover {
+        background-color: #AEB6FC;
+    }
+
+    .functionButtons:hover {
+        background-color: #567FF0;
+    }
+
+    .specialButtons:hover {
+        background-color: #567FF0;
+    }
+
+</style>
+
+<body>
+    <div id="container">
+        <div id="displayField">0</div>
+        <div id="userInputs">
+            <div id="numbers">
+                <div class="numberButtons" id="nine">9</div>
+                <div class="numberButtons" id="eight">8</div>
+                <div class="numberButtons" id="seven">7</div>
+                <div class="numberButtons" id="six">6</div>
+                <div class="numberButtons" id="five">5</div>
+                <div class="numberButtons" id="four">4</div>
+                <div class="numberButtons" id="three">3</div>
+                <div class="numberButtons" id="two">2</div>
+                <div class="numberButtons" id="one">1</div>
+                <div class="specialButtons" id="decimal">.</div>
+                <div class="numberButtons" id="zero">0</div>
+                <div class="specialButtons" id="equalOperator">=</div>
+            </div>
+            <div id="functions">
+                <div class="specialButtons" id="clearButton">C</div>
+                <div class="functionButtons" id="divideOperator">÷</div>
+                <div class="functionButtons" id="multiplyOperator">x</div>
+                <div class="functionButtons" id="subtractOperator">-</div>
+                <div class="functionButtons" id="addOperator">+</div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
