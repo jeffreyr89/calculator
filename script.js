@@ -2,6 +2,7 @@ let operator = ''
 let symbols = {'+':"add", '-':"subtract", 'x':"multiply", '÷':"divide"};
 let decimalAllowed = true;
 let numberAllowed = true;
+let equalAllowed = false;
 let maxLength = 9;
 let defaultFontSize = 64;
 
@@ -84,76 +85,79 @@ function addListeners() {
 
             decimalAllowed = true;
             numberAllowed = true;
+            equalAllowed = false;
         });
     });
     
     const equalOperator = document.getElementById('equalOperator');
 	equalOperator.addEventListener('click', function(e) {
-        let expressionArray = userInputString.split('|');
-        console.log(expressionArray);
+        if (equalAllowed === true) {
+            let expressionArray = userInputString.split('|');
+            console.log(expressionArray);
 
-        do {
-            
-            if (expressionArray.indexOf('x') >= 0) {
-                let operatorPosition = expressionArray.indexOf('x')
-                let product = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'multiply')
-                expressionArray.splice(operatorPosition-1, 3, product);
-                console.log(expressionArray);
-            };
-            
-            if (expressionArray.indexOf('÷') >= 0) {
-                let operatorPosition = expressionArray.indexOf('÷')
-                let quotient = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'divide')
-                expressionArray.splice(operatorPosition-1, 3, quotient);
-                console.log(expressionArray);
-            };
-            
-            if (expressionArray.indexOf('+') >= 0) {
-                let operatorPosition = expressionArray.indexOf('+')
-                let sum = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'add')
-                expressionArray.splice(operatorPosition-1, 3, sum);
-                console.log(expressionArray);
-            };
-            
-            if (expressionArray.indexOf('-') >= 0) {
-                let operatorPosition = expressionArray.indexOf('-')
-                let difference = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'subtract')
-                expressionArray.splice(operatorPosition-1, 3, difference);
-                console.log(expressionArray);
-            };
+            do {
+                
+                if (expressionArray.indexOf('x') >= 0) {
+                    let operatorPosition = expressionArray.indexOf('x')
+                    let product = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'multiply')
+                    expressionArray.splice(operatorPosition-1, 3, product);
+                    console.log(expressionArray);
+                };
+                
+                if (expressionArray.indexOf('÷') >= 0) {
+                    let operatorPosition = expressionArray.indexOf('÷')
+                    let quotient = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'divide')
+                    expressionArray.splice(operatorPosition-1, 3, quotient);
+                    console.log(expressionArray);
+                };
+                
+                if (expressionArray.indexOf('+') >= 0) {
+                    let operatorPosition = expressionArray.indexOf('+')
+                    let sum = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'add')
+                    expressionArray.splice(operatorPosition-1, 3, sum);
+                    console.log(expressionArray);
+                };
+                
+                if (expressionArray.indexOf('-') >= 0) {
+                    let operatorPosition = expressionArray.indexOf('-')
+                    let difference = operate(expressionArray[operatorPosition-1], expressionArray[operatorPosition+1], 'subtract')
+                    expressionArray.splice(operatorPosition-1, 3, difference);
+                    console.log(expressionArray);
+                };
 
-        } while (expressionArray.length > 1);
+            } while (expressionArray.length > 1);
 
-        expressionArray[0] = massageData(expressionArray[0]);
-        userInputString = expressionArray[0];
-        displayString = expressionArray[0];
+            expressionArray[0] = massageData(expressionArray[0]);
+            userInputString = expressionArray[0];
+            displayString = expressionArray[0];
 
-        populateDisplay(displayString);
+            populateDisplay(displayString);
 
-        decimalAllowed = false;
-        numberAllowed = false;
+            decimalAllowed = false;
+            numberAllowed = false;
+            equalAllowed = false;
+        };
     });
 
     const decimal = document.getElementById('decimal');
-	decimal.addEventListener('click', function(e) {
+    decimal.addEventListener('click', function(e) {
         if (decimalAllowed === true) {  
             userInputString = userInputString + e.target.innerText;
             displayString = displayString + e.target.innerText;
             populateDisplay(displayString);
-
             decimalAllowed = false;
-        }
+        };
     });
 
     const clearButton = document.getElementById('clearButton');
-	clearButton.addEventListener('click', function(e) {
+    clearButton.addEventListener('click', function(e) {
         userInputString = ''
         displayString = ''
         decimalAllowed = true;
         numberAllowed = true;
+        equalAllowed = false;
         populateDisplay('0');
     });
-
     
     const numbers = document.querySelectorAll('.numberButtons')
     numbers.forEach((div) => {		
@@ -161,6 +165,7 @@ function addListeners() {
             if (numberAllowed === true) {
                 userInputString = userInputString + e.target.innerText;
                 displayString = displayString + e.target.innerText;
+                equalAllowed = true;
                 populateDisplay(displayString);
             }
         });
